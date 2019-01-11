@@ -1,0 +1,2415 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="PrvDQVerwaltung_VS_V01" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/DQVerwaltung/V01" xmlns:ns0="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01" xmlns:ns2="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/Types/V01" xmlns:ns1="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01" xmlns:ns4="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/Datentypen/V01" xmlns:ns3="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Datentypen/V01" xmlns:ns6="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/Oberbau/Datentypen/V01" xmlns:ns5="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/DQVerwaltung/Types/V01" xmlns:ns8="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/Wertelisten/V01" xmlns:ns7="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/V01" xmlns:ns13="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01" xmlns:ns12="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/V01" xmlns:ns9="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:ns11="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Messages/V01" xmlns:ns10="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/Gleis/V01" xmlns:ns17="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01" xmlns:tns="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/DQVerwaltung/V01" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ns16="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/V01" xmlns:ns15="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/V01" xmlns:ns14="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns18="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/WeicheKreuzung/V01">
+<wsdl:documentation>Privater Service für die WANDA Inkonsistenzen Bearbeitung</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema xmlns:qs="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01" xmlns:qsdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01" xmlns:qswl="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01"/>
+            <xs:complexType name="AnlageArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AnlageKlasseType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AnlageklasseSchluesselType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="anlageArt" type="xs:string"/>
+                <xs:element name="anlageKlasse" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AnlagenNummerType">
+              <xs:sequence>
+                <xs:element name="nummer" type="xs:integer"/>
+                <xs:element minOccurs="0" name="unterNummer" type="xs:integer"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BetriebsZustandType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="EigentuemerType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GenehmigungsstatusType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InstandhalterType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="JahrType">
+              <xs:sequence>
+                <xs:element name="jahr" type="xs:integer"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="KilometrierungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="hektometer" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="kilometer" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="meter" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="signum" type="qswl:SignumType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LaengeType">
+              <xs:sequence>
+                <xs:element name="einheit" type="qswl:LaengenEinheitType"/>
+                <xs:element name="wert" type="xs:decimal"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LaengenEinheitType">
+              <xs:sequence>
+                <xs:element name="bezeichnung" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListenWertType">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesObjektOhneNetzBezug">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                    <xs:element name="gruppe" type="xs:string"/>
+                    <xs:element name="schluessel" type="xs:string"/>
+                    <xs:element minOccurs="0" name="untergruppe" type="xs:string"/>
+                    <xs:element minOccurs="0" name="elternWert" type="qsdt:ListenWertType"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="ObjektIDType">
+              <xs:sequence>
+                <xs:element name="wert" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RichtungsKennzeichenType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="TechnischerPlatzType">
+              <xs:sequence>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:findt="http://dbnetz.com/Finance/BOM/Datentypen/V01" xmlns:finwl="http://dbnetz.com/Finance/BOM/Wertelisten/V01" xmlns:mdmao="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/V01" xmlns:ob="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/V01" xmlns:or="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01" xmlns:ordt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Datentypen/V01" xmlns:qs="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01" xmlns:qsdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/V01"/>
+            <xs:complexType abstract="true" name="BasisObjekt">
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="BasisObjektAspekt" type="qs:BasisObjektAspekt"/>
+                <xs:element minOccurs="0" name="version" type="qs:BasisObjektVersion"/>
+                <xs:element minOccurs="0" name="BasisObjektIdentifizierer" type="qs:BasisObjektIdentifizierer"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BasisObjektAspekt">
+              <xs:choice>
+                <xs:element name="AttributMetaAspekt" type="mdmao:AttributMetaAspekt"/>
+                <xs:element name="StammdatenVerwaltungsAspekt" type="mdmao:StammdatenVerwaltungsAspekt"/>
+              </xs:choice>
+            </xs:complexType>
+            <xs:complexType name="BasisObjektIdentifizierer">
+              <xs:sequence>
+                <xs:element name="uebergreifendeID" type="qsdt:ObjektIDType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BasisObjektVersion">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="beschreibung" type="xs:string"/>
+                <xs:element name="versionsBezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="zeitstempel" nillable="true" type="xs:dateTime"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="vorgaenger" type="qs:BasisObjekt"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="InfrastrukturNetzObjekt">
+              <xs:complexContent>
+                <xs:extension base="qs:InfrastrukturObjekt">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="NetzBezug" type="qs:NetzBezug"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="InfrastrukturObjekt">
+              <xs:complexContent>
+                <xs:extension base="qs:BasisObjekt">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="aktivierungsDatum" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="anlageArt" type="qsdt:AnlageArtType"/>
+                    <xs:element minOccurs="0" name="anlageKlasse" type="qsdt:AnlageKlasseType"/>
+                    <xs:element minOccurs="0" name="anlagenNummer" type="qsdt:AnlagenNummerType"/>
+                    <xs:element minOccurs="0" name="beginnAbsetzungAbnutzung" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="betriebsZustand" type="qsdt:BetriebsZustandType"/>
+                    <xs:element minOccurs="0" name="deaktivierungsDatum" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="eigentuemer" type="qsdt:EigentuemerType"/>
+                    <xs:element minOccurs="0" name="fertigstellungsDatum" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="instandHalter" type="qsdt:InstandhalterType"/>
+                    <xs:element minOccurs="0" name="nutzungsDauer" type="qsdt:JahrType"/>
+                    <xs:element minOccurs="0" name="technischerPlatz" type="qsdt:TechnischerPlatzType"/>
+                    <xs:element minOccurs="0" name="zugangsJahr" type="qsdt:JahrType"/>
+                    <xs:element minOccurs="0" name="standort" type="or:NetzBezirk"/>
+                    <xs:element minOccurs="0" name="Kostenstelle" type="or:Kostenstelle"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Betriebsstelle" type="or:Betriebsstelle"/>
+                    <xs:element minOccurs="0" name="standortWerk" type="or:NetzSegment"/>
+                    <xs:element minOccurs="0" name="planungsWerk" type="or:NetzSegment"/>
+                    <xs:element minOccurs="0" name="Bahnstelle" type="or:Bahnstelle"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="InfrastrukturObjektOhneNetzBezug">
+              <xs:complexContent>
+                <xs:extension base="qs:InfrastrukturObjekt"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="LogischesNetzObjekt">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesObjekt">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="NetzBezug" type="qs:NetzBezug"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="LogischesObjekt">
+              <xs:complexContent>
+                <xs:extension base="qs:BasisObjekt"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="LogischesObjektOhneNetzBezug">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesObjekt"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="NetzBezug">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesObjektOhneNetzBezug">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="InfrastrukturNetzObjekt" type="qs:InfrastrukturNetzObjekt"/>
+                    <xs:element minOccurs="0" name="LogischesNetzObjekt" type="qs:LogischesNetzObjekt"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="NetzBezugsElement">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesNetzObjekt"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="Punkt">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesNetzObjekt"/>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:tns="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/Types/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/Types/V01">
+            <xs:simpleType name="AktivierungsdatumType">
+              <xs:restriction base="xs:date"/>
+            </xs:simpleType>
+            <xs:simpleType name="AnlagennummerType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="AnzahlGleiseType">
+              <xs:restriction base="xs:integer"/>
+            </xs:simpleType>
+            <xs:simpleType name="BahnstellenNummerType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="BauartBauwerkType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="BauartType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="BaulicheGleislaengeType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="BauwerkskennungType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="BereichskennzahlType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="BreiteType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="BuchungskreisType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="DeaktivierungsdatumType">
+              <xs:restriction base="xs:date"/>
+            </xs:simpleType>
+            <xs:simpleType name="EigentuemerType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="FlaecheType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="GleisartType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="GleisbezeichnungType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="GleisradiusType">
+              <xs:restriction base="xs:integer"/>
+            </xs:simpleType>
+            <xs:simpleType name="IDType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="255"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="IstAIBType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="5"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="IstAnschlussgleisType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="5"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="IstGleisverbindungType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="5"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="IstStumpfgleisType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="5"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="KilometerBisType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="KilometerVonType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="KostenstelleType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="KreuzungsKMType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="KreuzungsPartnerType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="LaengeType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="LageSOType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="10"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="LageType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="10"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="LandType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="LichteHoehe_MType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="LichteQuerschnittType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="LichteWeite_MType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="LiegtAufFreierStreckeType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="5"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="MaxHoeheType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="MeterBisType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="MeterVonType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="MinHoeheType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="Min_Ueberschuettungshoehe_MType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="NetzsegmentKuerzelType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="NummerType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="NutzungBauwerkType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="PlanungswerkKuerzelType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="PositionType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="RahmenkostenstelleType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="RichtungskennzeichenType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="RueckbaustatusOberbauType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="SchwellenartType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="StreckenkurznameType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="StreckennummerType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="TechnischerPlatzType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TunnelnameType">
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="UeberwiegendeSchwellenartType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="VerpachtetType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="5"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="WeichenartType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="WeichenbezeichnungType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="WeichenhalbmesserType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="WeichenlaengeType">
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="oeKuerzelType">
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="256"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:schema>
+    <xs:schema xmlns:ordt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Datentypen/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Datentypen/V01">
+            <xs:complexType name="BahnstelleArtType">
+              <xs:sequence>
+                <xs:element name="wert" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BahnstellenNummerType">
+              <xs:sequence>
+                <xs:element name="nummer" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BetriebsstellenNameKurzType">
+              <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BetriebsstellenNameLangType">
+              <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BuchungskreisType"/>
+            <xs:complexType name="GeschaeftseinheitType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="HierarchieEbeneType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="NetzSchluesselTyp">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="schluessel" type="xs:integer"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RIL100Kuerzel">
+              <xs:sequence>
+                <xs:element name="kuerzel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RahmenKostenstellenNummerType">
+              <xs:sequence>
+                <xs:element name="nummer" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StreckenNummerType">
+              <xs:sequence>
+                <xs:element name="nummer" type="xs:integer"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:mdmaldt="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/Datentypen/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/Datentypen/V01">
+            <xs:complexType name="AttributTypType">
+              <xs:sequence>
+                <xs:element name="bezeichnung" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="FuehrendesSystemType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GenehmigungsausschlussKategorieType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LebenszyklusStatusType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:ns1="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Messages/V01" xmlns:ns2="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01" xmlns:tns="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/DQVerwaltung/Types/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/DQVerwaltung/Types/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Messages/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01"/>
+            <xs:complexType name="Ausnahme">
+              <xs:sequence>
+                <xs:element name="BetroffenesISOB" type="xs:string"/>
+                <xs:element name="VerletzteRegelNummer" type="xs:string"/>
+                <xs:element name="Erfasser" type="xs:string"/>
+                <xs:element name="AusnahmeTyp" type="tns:AusnahmeTyp"/>
+                <xs:element minOccurs="0" name="Beschreibung" type="xs:string"/>
+                <xs:element minOccurs="0" name="GueltigAbDatum" type="xs:date"/>
+                <xs:element minOccurs="0" name="GueltigBisDatum" type="xs:date"/>
+                <xs:element minOccurs="0" name="Aenderungsherkunft" type="xs:string"/>
+                <xs:element minOccurs="0" name="Kommentar" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AusnahmeFailure">
+              <xs:sequence>
+                <xs:element name="BetroffenesISOB" type="xs:string"/>
+                <xs:element name="VerletzteRegelNummer" type="xs:string"/>
+                <xs:element name="Fehlercode" type="xs:string"/>
+                <xs:element name="Fehlermeldung" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AusnahmeSuccess">
+              <xs:sequence>
+                <xs:element name="BetroffenesISOB" type="xs:string"/>
+                <xs:element name="VerletzteRegelNummer" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType final="restriction" name="AusnahmeTyp">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Durch Ausnahme Beendet"/>
+                <xs:enumeration value="Durch Aenderung Beendet"/>
+                <xs:enumeration value="Ohne Vorgang Beendet"/>
+                <xs:enumeration value="Vom System Ausgenommen"/>
+                <xs:enumeration value="Offen"/>
+                <xs:enumeration value="Geschlossen"/>
+                <xs:enumeration value="Anderer"/>
+                <xs:enumeration value="Ausnahmeverlängerung Beantragt"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="InkonsistenzIdentifizierer">
+              <xs:sequence>
+                <xs:element name="ISOB_ID" type="xs:string"/>
+                <xs:element minOccurs="0" name="ISOB_Version" type="xs:string"/>
+                <xs:element name="RegelNummer" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InkonsistenzListenEintrag">
+              <xs:sequence>
+                <xs:element name="ObjektTyp" type="xs:string"/>
+                <xs:element name="Kategorie" type="xs:string"/>
+                <xs:element name="ISOB_ID" type="xs:string"/>
+                <xs:element name="ISOB_Version" type="xs:string"/>
+                <xs:element name="RegelNummer" type="xs:string"/>
+                <xs:element minOccurs="0" name="RegelName" type="xs:string"/>
+                <xs:element minOccurs="0" name="RegelBeschreibung" type="xs:string"/>
+                <xs:element minOccurs="0" name="Anlagennummer" type="xs:string"/>
+                <xs:element minOccurs="0" name="TechnischerPlatz" type="xs:string"/>
+                <xs:element minOccurs="0" name="Kostenstelle" type="xs:string"/>
+                <xs:element minOccurs="0" name="Regionalbereich" type="xs:string"/>
+                <xs:element minOccurs="0" name="TPBezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="Netzsegment" type="xs:string"/>
+                <xs:element minOccurs="0" name="Planungswerk" type="xs:string"/>
+                <xs:element minOccurs="0" name="Bearbeiter" type="xs:string"/>
+                <xs:element minOccurs="0" ref="tns:RIL100"/>
+                <xs:element minOccurs="0" ref="tns:Streckennummer"/>
+                <xs:element ref="tns:Erstellungsdatum"/>
+                <xs:element minOccurs="0" ref="tns:ISOB_Nummer"/>
+                <xs:element minOccurs="0" name="Status" type="xs:string"/>
+                <xs:element minOccurs="0" name="StatusBis" type="xs:date"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InkonsistenzSucheInput">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="ObjektTyp" type="xs:string"/>
+                <xs:element minOccurs="0" name="Kategorie" type="xs:string"/>
+                <xs:element minOccurs="0" name="ISOB_ID" type="xs:string"/>
+                <xs:element minOccurs="0" name="ISOB_Version" type="xs:string"/>
+                <xs:element minOccurs="0" name="RegelNummer" type="xs:string"/>
+                <xs:element minOccurs="0" name="Anlagennummer" type="xs:string"/>
+                <xs:element minOccurs="0" name="TechnischerPlatz" type="xs:string"/>
+                <xs:element minOccurs="0" name="Regionalbereich" type="xs:string"/>
+                <xs:element minOccurs="0" name="TPBezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="Kostenstelle" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Netzsegment" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Planungswerk" type="xs:string"/>
+                <xs:element minOccurs="0" ref="tns:RIL100"/>
+                <xs:element minOccurs="0" ref="tns:Streckennummer"/>
+                <xs:element minOccurs="0" ref="tns:Erstellungsdatum"/>
+                <xs:element minOccurs="0" ref="tns:ISOB_Nummer"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Status" type="xs:string"/>
+                <xs:element minOccurs="0" name="StatusBis" type="xs:date"/>
+                <xs:element minOccurs="0" name="Startpunkt" type="xs:int"/>
+                <xs:element minOccurs="0" name="Rueckgabeumfang" type="xs:int"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Regel">
+              <xs:sequence>
+                <xs:element name="Nummer" type="xs:integer"/>
+                <xs:element name="Kategorie" type="xs:string"/>
+                <xs:element name="Beschreibung" type="xs:string"/>
+                <xs:element name="Bezeichnung" type="xs:string"/>
+                <xs:element name="Objekttyp" type="xs:string"/>
+                <xs:element name="SystemEmpfehlung" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="PruefMerkmale" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:element name="BetriebsstellenKurzbezeichnung" nillable="true" type="xs:string"/>
+            <xs:element name="Erstellungsdatum" type="xs:string"/>
+            <xs:element name="ISOB_Nummer" type="xs:string"/>
+            <xs:element name="RIL100">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="5"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Streckenkurzbezeichnung" nillable="true" type="xs:string"/>
+            <xs:element name="Streckennummer" type="xs:string"/>
+            <xs:element name="TONI_Nummer" nillable="true" type="xs:string"/>
+            <xs:element name="TotalAmount" type="xs:string"/>
+          </xs:schema>
+    <xs:schema xmlns:ismdmobdt="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/Oberbau/Datentypen/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/Oberbau/Datentypen/V01">
+            <xs:complexType name="HaeufigsteRahmenkostenstellenType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="NetzbezirkWerteListeType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="NetzsegmentWerteListeType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SystemStatusType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:busgl="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/Gleis/V01" xmlns:buswk="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/WeicheKreuzung/V01" xmlns:ob="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/V01" xmlns:obdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01" xmlns:or="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01" xmlns:ordt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Datentypen/V01" xmlns:orwl="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Wertelisten/V01" xmlns:qs="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01" xmlns:qsdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01" xmlns:qswl="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/WeicheKreuzung/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/Gleis/V01"/>
+            <xs:complexType name="BaulicherGleisAbschnitt">
+              <xs:complexContent>
+                <xs:extension base="qs:InfrastrukturNetzObjekt">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="baulicheLaenge" type="qsdt:LaengeType"/>
+                    <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                    <xs:element minOccurs="0" name="rueckbauStatusOberbau" type="obdt:RueckbauStatusOberbauType"/>
+                    <xs:element minOccurs="0" name="schienenForm" type="obdt:SchienenFormType"/>
+                    <xs:element minOccurs="0" name="schwellenArt" type="obdt:SchwellenArtBezeichnungType"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="vorgaenger" type="ob:BaulicherGleisAbschnitt"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="DatenMigrationGleisKantenBezug">
+              <xs:complexContent>
+                <xs:extension base="qs:NetzBezug">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="stationBis" type="xs:decimal"/>
+                    <xs:element minOccurs="0" name="stationVon" type="xs:decimal"/>
+                    <xs:element name="GleisKante" type="ob:GleisKante"/>
+                    <xs:element minOccurs="0" name="Strecke" type="or:Strecke"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="DatenMigrationGleisKnoten">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesNetzObjekt">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="beschreibung" type="xs:string"/>
+                    <xs:element name="nummer" type="xs:string"/>
+                    <xs:element name="typ" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="DatenMigrationZulaessigeFahrBeziehung" type="ob:DatenMigrationZulaessigeFahrBeziehung"/>
+                    <xs:element minOccurs="0" name="WeicheKreuzung" type="ob:WeicheKreuzung"/>
+                    <xs:element maxOccurs="4" minOccurs="0" name="StreckenBezug" type="or:StreckenBezug"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="vorgaenger" type="ob:DatenMigrationGleisKnoten"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="DatenMigrationGleisende">
+              <xs:complexContent>
+                <xs:extension base="ob:DatenMigrationGleisKnoten"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="DatenMigrationKreuzungsKnoten">
+              <xs:complexContent>
+                <xs:extension base="ob:DatenMigrationGleisKnoten"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="DatenMigrationStreckenWechselKnoten">
+              <xs:complexContent>
+                <xs:extension base="ob:DatenMigrationGleisKnoten"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="DatenMigrationWeichenKnoten">
+              <xs:complexContent>
+                <xs:extension base="ob:DatenMigrationGleisKnoten"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="DatenMigrationZulaessigeFahrBeziehung">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="geometrischeLaenge" type="qsdt:LaengeType"/>
+                <xs:element maxOccurs="2" minOccurs="2" name="GleisKante" type="ob:GleisKante"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="vorgaenger" type="ob:DatenMigrationZulaessigeFahrBeziehung"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Gleis">
+              <xs:complexContent>
+                <xs:extension base="qs:InfrastrukturNetzObjekt">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="art" type="obdt:GleisArtType"/>
+                    <xs:element minOccurs="0" name="baulicheLaenge" type="qsdt:LaengeType"/>
+                    <xs:element minOccurs="0" name="nummer" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ueberwiegendeSchienenForm" type="obdt:SchienenFormType"/>
+                    <xs:element minOccurs="0" name="ueberwiegendeSchwellenart" type="obdt:KonsolidierteSchwellenArtType"/>
+                    <xs:element minOccurs="0" name="istStumpfGleis" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="istGleisVerbindung" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="istAnschlussGleis" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="liegtAufFreierStrecke" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="ZusaetzlicheGleisDaten" type="busgl:ZusaetzlicheGleisDaten"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="BaulicherGleisAbschnitt" type="ob:BaulicherGleisAbschnitt"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="DatenMigrationGleisKantenBezug" type="ob:DatenMigrationGleisKantenBezug"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="StreckenBezug" type="or:StreckenBezug"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="vorgaenger" type="ob:Gleis"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="GleisKante">
+              <xs:complexContent>
+                <xs:extension base="qs:NetzBezugsElement">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="geometrischeLaenge" type="qsdt:LaengeType"/>
+                    <xs:element name="nummer" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="vorgaenger" type="ob:GleisKante"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="WeicheKreuzung">
+              <xs:complexContent>
+                <xs:extension base="qs:InfrastrukturNetzObjekt">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="bereichsKennzahl" type="obdt:BereichsKennzahlType"/>
+                    <xs:element minOccurs="0" name="geometrischeLaenge" type="qsdt:LaengeType"/>
+                    <xs:element minOccurs="0" name="gleisArt" type="obdt:GleisArtType"/>
+                    <xs:element minOccurs="0" name="halbmesser" type="obdt:WeichenHalbmesserType"/>
+                    <xs:element minOccurs="0" name="konsolidierteWeichenArt" type="obdt:KonsolidierteWeichenArtType"/>
+                    <xs:element minOccurs="0" name="neigungsZahl" type="obdt:WeichenNeigungsZahlType"/>
+                    <xs:element minOccurs="0" name="nummer" type="xs:string"/>
+                    <xs:element minOccurs="0" name="rueckbauStatusOberbau" type="obdt:RueckbauStatusOberbauType"/>
+                    <xs:element minOccurs="0" name="schienenForm" type="obdt:SchienenFormType"/>
+                    <xs:element minOccurs="0" name="schwellenArt" type="obdt:KonsolidierteSchwellenArtType"/>
+                    <xs:element minOccurs="0" name="ZusaetzlicheWeicheKreuzungDaten" type="buswk:ZusaetzlicheWeicheKreuzungDaten"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="StreckenBezug" type="or:StreckenBezug"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="vorgaenger" type="ob:WeicheKreuzung"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:isexcwl="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/Wertelisten/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/Wertelisten/V01">
+            <xs:simpleType name="ServiceCategoryType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="AdapterService"/>
+                <xs:enumeration value="ProcessService"/>
+                <xs:enumeration value="BusinessService"/>
+                <xs:enumeration value="BasicService"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="SeverityLevelType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="MINOR"/>
+                <xs:enumeration value="MAJOR"/>
+                <xs:enumeration value="CRITICAL"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:schema>
+    <xs:schema xmlns:excwl="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/Wertelisten/V01" xmlns:isexp="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01" xmlns:qs="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/Wertelisten/V01"/>
+            <xs:complexType name="BusinessException">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="causingData" type="xs:string"/>
+                <xs:element minOccurs="0" name="reason" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" name="specificAttributList" type="isexp:ExceptionAttributList"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CommunicationException">
+              <xs:complexContent>
+                <xs:extension base="isexp:TechnicalException"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="ConfigurationException">
+              <xs:complexContent>
+                <xs:extension base="isexp:TechnicalException"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="CorrelationInformation">
+              <xs:choice>
+                <xs:element name="CorrelationContext">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="InstanceOriginID" type="xs:string"/>
+                      <xs:element maxOccurs="unbounded" name="RequestID" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="CorrelationID" type="xs:string"/>
+              </xs:choice>
+            </xs:complexType>
+            <xs:complexType name="DatabaseException">
+              <xs:complexContent>
+                <xs:extension base="isexp:TechnicalException"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="EntityException">
+              <xs:complexContent>
+                <xs:extension base="isexp:TechnicalException"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="ExceptionAttributList">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="explanation" type="xs:string"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element minOccurs="0" name="objectID" type="qs:BasisObjektIdentifizierer"/>
+                <xs:element name="value" type="xs:string"/>
+                <xs:element minOccurs="0" name="violatedRule" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ExceptionCategory">
+              <xs:sequence>
+                <xs:element name="categorySection" type="xs:string"/>
+                <xs:element name="categorySubSection" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ExceptionClass">
+              <xs:choice>
+                <xs:element minOccurs="0" name="BusinessException" type="isexp:BusinessException"/>
+                <xs:element minOccurs="0" name="TechnicalException" type="isexp:TechnicalException"/>
+              </xs:choice>
+            </xs:complexType>
+            <xs:complexType name="ExceptionContext">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="initialExceptionTimestamp" type="xs:string"/>
+                <xs:element name="pointerToOrigin" type="isexp:CorrelationInformation"/>
+                <xs:element minOccurs="0" name="rootCauseComponent" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ExceptionDetails">
+              <xs:sequence>
+                <xs:element name="exceptionClass" type="isexp:ExceptionClass"/>
+                <xs:element name="exceptionContext" type="isexp:ExceptionContext"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="FunctionalConsistencyException">
+              <xs:complexContent>
+                <xs:extension base="isexp:BusinessException"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="OrganizationalAssigment">
+              <xs:sequence>
+                <xs:element name="serviceDomain" type="xs:string"/>
+                <xs:element minOccurs="0" name="serviceModul" type="xs:string"/>
+                <xs:element name="serviceSubDomain" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ProcessingException">
+              <xs:complexContent>
+                <xs:extension base="isexp:TechnicalException"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="RuntimeException">
+              <xs:complexContent>
+                <xs:extension base="isexp:TechnicalException"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="SecurityException">
+              <xs:complexContent>
+                <xs:extension base="isexp:TechnicalException"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="ServiceException">
+              <xs:sequence>
+                <xs:element name="causingService" type="isexp:ServiceInformation"/>
+                <xs:element name="exceptionCategory" type="isexp:ExceptionCategory"/>
+                <xs:element name="exceptionCode" type="xs:string"/>
+                <xs:element name="exceptionDetails" type="isexp:ExceptionDetails"/>
+                <xs:element name="exceptionShortMessage" type="xs:string"/>
+                <xs:element name="severity" type="excwl:SeverityLevelType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceInformation">
+              <xs:sequence>
+                <xs:element name="organizationalAssignment" type="isexp:OrganizationalAssigment"/>
+                <xs:element name="serviceName" type="xs:string"/>
+                <xs:element minOccurs="0" name="serviceVersion" type="xs:string"/>
+                <xs:element name="serviceCategory" type="excwl:ServiceCategoryType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="TechnicalException">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="contextData" type="xs:string"/>
+                <xs:element minOccurs="0" name="details" type="xs:string"/>
+                <xs:element name="systemCode" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ValidationException">
+              <xs:complexContent>
+                <xs:extension base="isexp:BusinessException"/>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:bo="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/V01" xmlns:busgl="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/Gleis/V01" xmlns:obdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01" xmlns:obwl="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Wertelisten/V01" xmlns:qsdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/Gleis/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01"/>
+            <xs:complexType name="ZusaetzlicheGleisAbschnittDaten">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="abschnittBis" type="xs:string"/>
+                <xs:element minOccurs="0" name="abschnittVon" type="xs:string"/>
+                <xs:element minOccurs="0" name="jahrInBenutzungsnahmeSchiene" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="jahrInBenutzungsnahmeSchwelle" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="jahrPlanumsverbesserung" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="materialKennzahlSchiene" type="xs:string"/>
+                <xs:element minOccurs="0" name="materialKennzahlSchwelle" type="xs:string"/>
+                <xs:element minOccurs="0" name="rueckbauJahr" type="qsdt:JahrType"/>
+                <xs:element name="rueckbauStatusOberbau" type="obdt:RueckbauStatusOberbauType"/>
+                <xs:element minOccurs="0" name="schienenBefestigung" type="obdt:SchienenBefestigungType"/>
+                <xs:element minOccurs="0" name="schwellenTeilung" type="xs:string"/>
+                <xs:element minOccurs="0" name="stahlsorte" type="obdt:StahlsorteType"/>
+                <xs:element minOccurs="0" name="strangLaenge" type="qsdt:LaengeType"/>
+                <xs:element minOccurs="0" name="traenkHerstellJahr" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="walzJahr" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="zulaessigeGeschwindigkeitEG10" type="xs:decimal"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ZusaetzlicheGleisDaten">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="anzahlZuegeProTag" type="xs:integer"/>
+                <xs:element minOccurs="0" name="bahnArt" type="obdt:BahnArtType"/>
+                <xs:element minOccurs="0" name="bahnNutzung" type="obdt:BahnNutzungType"/>
+                <xs:element minOccurs="0" name="bauform" type="obdt:BauformType"/>
+                <xs:element minOccurs="0" name="bautypMaterialnummer" type="xs:string"/>
+                <xs:element minOccurs="0" name="belastungsStufe" type="obdt:BelastungsStufeType"/>
+                <xs:element minOccurs="0" name="betriebsbereich" type="xs:integer"/>
+                <xs:element minOccurs="0" name="elektrifizierung" type="obdt:ElektrifizierungType"/>
+                <xs:element minOccurs="0" name="garantieBeginnDatum" type="xs:date"/>
+                <xs:element minOccurs="0" name="garantieEndeDatum" type="xs:date"/>
+                <xs:element minOccurs="0" name="gesamtlaenge" type="qsdt:LaengeType"/>
+                <xs:element minOccurs="0" name="gleisBis" type="xs:string"/>
+                <xs:element minOccurs="0" name="gleisOrdnung" type="obdt:GleisOrdnungType"/>
+                <xs:element minOccurs="0" name="gleisVon" type="xs:string"/>
+                <xs:element minOccurs="0" name="hGMesszuegeFahrwegmessung" type="xs:string"/>
+                <xs:element minOccurs="0" name="hGnachVZG" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="inBetriebAbDatum" type="xs:date"/>
+                <xs:element minOccurs="0" name="lageKennziffer" type="obdt:LageKennzahlType"/>
+                <xs:element minOccurs="0" name="lageKilometer" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="leistungsTonnenProTag" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="netzTyp" type="obdt:NetzTypType"/>
+                <xs:element minOccurs="0" name="partner" type="xs:string"/>
+                <xs:element minOccurs="0" name="planerGruppe" type="xs:string"/>
+                <xs:element minOccurs="0" name="standortKennzahl" type="obdt:StandortkennzahlType"/>
+                <xs:element minOccurs="0" name="standortwerkVerantwortlicherArbeitsplatz" type="xs:string"/>
+                <xs:element minOccurs="0" name="streckenKlasse" type="obdt:StreckenKlasseType"/>
+                <xs:element minOccurs="0" name="streckenStandard" type="obdt:StreckenStandardType"/>
+                <xs:element minOccurs="0" name="streckenZustand" type="obdt:StreckenZustandType"/>
+                <xs:element minOccurs="0" name="typ" type="obdt:GleisTypType"/>
+                <xs:element minOccurs="0" name="verantwortlicherArbeitsplatz" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="ZusaetzlicheGleisAbschnittDaten" type="busgl:ZusaetzlicheGleisAbschnittDaten"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:isexp="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01" xmlns:ismsg="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Messages/V01" xmlns:issom="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Messages/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/V01"/>
+            <xs:complexType abstract="true" name="AbstractInput">
+              <xs:sequence>
+                <xs:element name="ServiceMessageHeader" type="issom:ServiceMessageHeader"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="AbstractOutput">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="ServiceException" type="isexp:ServiceException"/>
+                <xs:element name="ServiceResponseHeader" type="issom:ServiceResponseHeader"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:issom="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/V01">
+            <xs:complexType name="ServiceMessageHeader">
+              <xs:sequence>
+                <xs:element name="applicationID" type="xs:string"/>
+                <xs:element name="correlationID" type="xs:string"/>
+                <xs:element name="e2eCorrelationID" type="xs:string"/>
+                <xs:element minOccurs="0" name="requestID" type="xs:string"/>
+                <xs:element minOccurs="0" name="timeout" type="xs:long"/>
+                <xs:element name="user" type="xs:string"/>
+                <xs:element minOccurs="0" name="credentials" type="xs:string"/>
+                <xs:element minOccurs="0" name="sequenceKey" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceResponseHeader">
+              <xs:sequence>
+                <xs:element name="correlationID" type="xs:string"/>
+                <xs:element name="e2eCorrelationID" type="xs:string"/>
+                <xs:element minOccurs="0" name="requestID" type="xs:string"/>
+                <xs:element name="returnCode" type="xs:integer"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ServiceMessageHeader" type="issom:ServiceMessageHeader"/>
+          </xs:schema>
+    <xs:schema xmlns:qswl="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01">
+            <xs:simpleType name="AnlageArtKeyType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="A"/>
+                <xs:enumeration value="B"/>
+                <xs:enumeration value="F"/>
+                <xs:enumeration value="G"/>
+                <xs:enumeration value="I"/>
+                <xs:enumeration value="N"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="AnlageArtValueType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="aktive Anlage, die entsprechend AfA-Schlüssel abgeschrieben wird"/>
+                <xs:enumeration value="Anlage im Bau, wird nicht abgeschrieben"/>
+                <xs:enumeration value="Finanzlage"/>
+                <xs:enumeration value="Leasinganlage (operating lease) nur Info"/>
+                <xs:enumeration value="negative Anlage"/>
+                <xs:enumeration value="Sammelanlage für GWG"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="AnlagenKlasseKeyType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="411000A"/>
+                <xs:enumeration value="411000B"/>
+                <xs:enumeration value="412000A"/>
+                <xs:enumeration value="412000B"/>
+                <xs:enumeration value="413000A"/>
+                <xs:enumeration value="413000B"/>
+                <xs:enumeration value="414000A"/>
+                <xs:enumeration value="414000B"/>
+                <xs:enumeration value="414100A"/>
+                <xs:enumeration value="414100B"/>
+                <xs:enumeration value="421000A"/>
+                <xs:enumeration value="421000B"/>
+                <xs:enumeration value="422000A"/>
+                <xs:enumeration value="422000B"/>
+                <xs:enumeration value="423000A"/>
+                <xs:enumeration value="423000B"/>
+                <xs:enumeration value="424000A"/>
+                <xs:enumeration value="424000B"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="AnlagenKlasseValueType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Gleise überwiegend Holzschwellen"/>
+                <xs:enumeration value="Gleise überwiegend Holzschwellen AiB"/>
+                <xs:enumeration value="Gleise überwiegend Stahlschwellen"/>
+                <xs:enumeration value="Gleise überwiegend Stahlschwellen AiB"/>
+                <xs:enumeration value="Gleise überwiegend Betonschwellen"/>
+                <xs:enumeration value="Gleise überwiegend Betonschwellen AiB"/>
+                <xs:enumeration value="Gleise überwiegend Sonderbauart"/>
+                <xs:enumeration value="Gleise überwiegend Sonderbauart AiB"/>
+                <xs:enumeration value="FesteFahrbahn - förderungsfähig"/>
+                <xs:enumeration value="FesteFahrbahn - förderungsfähig AiB"/>
+                <xs:enumeration value="Weichen überwiegend Holzschwellen"/>
+                <xs:enumeration value="Weichen überwiegend Holzschwellen AiB"/>
+                <xs:enumeration value="Weichen überwiegend Stahlschwellen"/>
+                <xs:enumeration value="Weichen überwiegend Stahlschwellen AiB"/>
+                <xs:enumeration value="Weichen überwiegend Betonschwellen"/>
+                <xs:enumeration value="Weichen überwiegend Betonschwellen AiB"/>
+                <xs:enumeration value="Weichen überwiegend Sonderbauart"/>
+                <xs:enumeration value="Weichen überwiegend Sonderbauart AiB"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="BetriebsZustandKeyType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="A"/>
+                <xs:enumeration value="I"/>
+                <xs:enumeration value="R"/>
+                <xs:enumeration value="S"/>
+                <xs:enumeration value="T"/>
+                <xs:enumeration value="U"/>
+                <xs:enumeration value="V"/>
+                <xs:enumeration value="W"/>
+                <xs:enumeration value="X"/>
+                <xs:enumeration value="Z"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="BetriebsZustandValueType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Anlage in Bau"/>
+                <xs:enumeration value="betriebsnotwendig"/>
+                <xs:enumeration value="mit Betrieb, Rückbau vorgesehen"/>
+                <xs:enumeration value="ohne Betrieb, Rückbau vorgesehen"/>
+                <xs:enumeration value="rückgebaut"/>
+                <xs:enumeration value="saisonal genutzte Anlage"/>
+                <xs:enumeration value="stillgelegt"/>
+                <xs:enumeration value="Teilnutzung"/>
+                <xs:enumeration value="zeitweise außer Betrieb"/>
+                <xs:enumeration value="Zugang-WK zu ABC-Kennzeichen W"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="EigentuemerValueType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="DB Netz"/>
+                <xs:enumeration value="Konzern"/>
+                <xs:enumeration value="Dritte"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="GenehmigungsstatusValueType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Genehmigt"/>
+                <xs:enumeration value="Abgelehnt"/>
+                <xs:enumeration value="Ungenehmigt"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="InstandhalterValueType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="DB Netz"/>
+                <xs:enumeration value="Dritte"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="LaengenEinheitType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Dezimeter"/>
+                <xs:enumeration value="Hektometer"/>
+                <xs:enumeration value="Kilometer "/>
+                <xs:enumeration value="Meter"/>
+                <xs:enumeration value="Zentimeter"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="RichtungsKennzeichenKeyType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="0"/>
+                <xs:enumeration value="1"/>
+                <xs:enumeration value="2"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="RichtungsKennzeichenValueKeyType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="in beide Richtungen"/>
+                <xs:enumeration value="in Richtung der Kilometrierung"/>
+                <xs:enumeration value="in Gegenrichtung der Kilometrierung"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="SignumType">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="+"/>
+                <xs:enumeration value="-"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:schema>
+    <xs:schema xmlns:or="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01" xmlns:ordt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Datentypen/V01" xmlns:qs="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01" xmlns:qsdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01" xmlns:qswl="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01"/>
+            <xs:complexType name="Bahnstelle">
+              <xs:complexContent>
+                <xs:extension base="qs:BasisObjekt">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="art" type="ordt:BahnstelleArtType"/>
+                    <xs:element minOccurs="0" name="beschreibung1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="beschreibung2" type="xs:string"/>
+                    <xs:element minOccurs="0" name="buchungskreis" type="ordt:BuchungskreisType"/>
+                    <xs:element minOccurs="0" name="hierarchieEbene" type="ordt:HierarchieEbeneType"/>
+                    <xs:element name="nummer" type="ordt:BahnstellenNummerType"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Bahnstelle" type="or:Bahnstelle"/>
+                    <xs:element minOccurs="0" name="NetzSegment" type="or:NetzSegment"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="BetriebsKnotenBahnstelle">
+              <xs:complexContent>
+                <xs:extension base="or:Bahnstelle">
+                  <xs:sequence>
+                    <xs:element name="Betriebsstelle" type="or:Betriebsstelle"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="Betriebsstelle">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesNetzObjekt">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="art" type="xs:string"/>
+                    <xs:element name="kuerzel" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nameKurz" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nameLang" type="xs:string"/>
+                    <xs:element minOccurs="0" name="netzSchluessel" type="ordt:NetzSchluesselTyp"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="StreckenBezug" type="or:StreckenBezug"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="Geschaeftseinheit">
+              <xs:sequence>
+                <xs:element name="typ" type="ordt:GeschaeftseinheitType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="KilometrierungsLinie">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesObjektOhneNetzBezug">
+                  <xs:sequence>
+                    <xs:element name="Punkt" type="qs:Punkt"/>
+                    <xs:element name="Punkt" type="qs:Punkt"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="Kostenstelle">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Bahnstelle" type="or:Bahnstelle"/>
+                <xs:element name="RahmenKostenstelle" type="or:RahmenKostenstelle"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="NetzBezirk">
+              <xs:sequence>
+                <xs:element name="kuerzel" type="xs:string"/>
+                <xs:element minOccurs="0" name="name" type="xs:string"/>
+                <xs:element name="NetzSegment" type="or:NetzSegment"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="NetzSegment">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="kuerzel" type="xs:string"/>
+                <xs:element minOccurs="0" name="name" type="xs:string"/>
+                <xs:element minOccurs="0" name="oeKuerzel" type="xs:string"/>
+                <xs:element minOccurs="0" name="oeName" type="xs:string"/>
+                <xs:element minOccurs="0" name="Geschaeftseinheit" type="or:Geschaeftseinheit"/>
+                <xs:element minOccurs="0" name="RegionalBereich" type="or:RegionalBereich"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RahmenKostenstelle">
+              <xs:sequence>
+                <xs:element name="nummer" type="ordt:RahmenKostenstellenNummerType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RegionalBereich">
+              <xs:sequence>
+                <xs:element name="kuerzel" type="xs:string"/>
+                <xs:element minOccurs="0" name="name" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Strecke">
+              <xs:complexContent>
+                <xs:extension base="qs:NetzBezugsElement">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="kurzName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="langName" type="xs:string"/>
+                    <xs:element name="nummer" type="ordt:StreckenNummerType"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="StreckenAbschnitt">
+              <xs:complexContent>
+                <xs:extension base="qs:LogischesNetzObjekt"/>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="StreckenAbschnittsBahnstelle">
+              <xs:complexContent>
+                <xs:extension base="or:Bahnstelle">
+                  <xs:sequence>
+                    <xs:element name="kilometrierungBis" type="qsdt:KilometrierungType"/>
+                    <xs:element name="kilometrierungVon" type="qsdt:KilometrierungType"/>
+                    <xs:element name="BetriebsstelleVon" type="or:Betriebsstelle"/>
+                    <xs:element name="BetriebsstelleBis" type="or:Betriebsstelle"/>
+                    <xs:element name="Strecke" type="or:Strecke"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="StreckenBezug">
+              <xs:complexContent>
+                <xs:extension base="qs:NetzBezug">
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="kilometrierungBis" type="qsdt:KilometrierungType"/>
+                    <xs:element minOccurs="0" name="kilometrierungVon" type="qsdt:KilometrierungType"/>
+                    <xs:element minOccurs="0" name="richtungsKennzeichen" type="qsdt:RichtungsKennzeichenType"/>
+                    <xs:element minOccurs="0" name="Strecke" type="or:Strecke"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="ZugMeldestelle">
+              <xs:complexContent>
+                <xs:extension base="or:Betriebsstelle"/>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/DQVerwaltung/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Messages/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/DQVerwaltung/Types/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/V01"/>
+            <xs:complexType name="AusnahmeAnlegenInput">
+              <xs:complexContent>
+                <xs:extension base="ns11:AbstractInput">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Ausnahme" type="ns5:Ausnahme"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="AusnahmeOutput">
+              <xs:complexContent>
+                <xs:extension base="ns11:AbstractOutput">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="ErfolgreicheAusnahme" type="ns5:AusnahmeSuccess"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="FehlgeschlageneAusnahmen" type="ns5:AusnahmeSuccess"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="BereinigenInput">
+              <xs:sequence>
+                <xs:element default="true" minOccurs="0" name="Cleanup" type="xs:boolean"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BereinigenOutput">
+              <xs:sequence>
+                <xs:element default="SUCCESS" name="StatusCode" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RegelListeOutput">
+              <xs:complexContent>
+                <xs:extension base="ns11:AbstractOutput">
+                  <xs:sequence>
+                    <xs:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="RegelListeOutput" type="ns5:Regel"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="RegelSuchenInput">
+              <xs:complexContent>
+                <xs:extension base="ns11:AbstractInput">
+                  <xs:sequence>
+                    <xs:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="objektTyp" type="xs:string"/>
+                    <xs:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="Kategorie" type="xs:string"/>
+                    <xs:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="Nummer" type="xs:string"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="StatusInput">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Depth" type="xs:integer"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StatusOutput">
+              <xs:sequence>
+                <xs:element name="ServiceVersion" type="xs:string"/>
+                <xs:element name="StatusCode" type="xs:string"/>
+                <xs:element name="StatusText" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:element name="AusnahmeAnlegenInput" type="tns:AusnahmeAnlegenInput"/>
+            <xs:element name="AusnahmeOutput" type="tns:AusnahmeOutput"/>
+            <xs:element name="AusnahmenZaehlenInput">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="ns11:AbstractInput">
+                    <xs:sequence>
+                      <xs:element name="TageBisAblaufInklusive" type="xs:int"/>
+                      <xs:element maxOccurs="unbounded" minOccurs="0" name="Netzsegment" type="xs:string"/>
+                      <xs:element maxOccurs="unbounded" minOccurs="0" name="Regionalbereich" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AusnahmenZaehlenOutput">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="ns11:AbstractOutput">
+                    <xs:sequence>
+                      <xs:element maxOccurs="unbounded" minOccurs="0" name="AnzahlAusnahmen">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Regionalbereich" type="xs:string"/>
+                            <xs:element name="Netzsegment" type="xs:string"/>
+                            <xs:element name="Anzahl" type="xs:int"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="BereinigenInput" type="tns:BereinigenInput"/>
+            <xs:element name="BereinigenOutput" type="tns:BereinigenOutput"/>
+            <xs:element name="InkonsistenzLesenInput">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="ns11:AbstractInput">
+                    <xs:sequence>
+                      <xs:element name="InkonsistenzID" type="ns5:InkonsistenzIdentifizierer"/>
+                      <xs:element minOccurs="0" name="Status" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="InkonsistenzLesenOutput">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="ns11:AbstractOutput">
+                    <xs:sequence>
+                      <xs:element name="Infrastrukturobjekt" type="ns16:InfrastrukturObjekt"/>
+                      <xs:element name="Regel" type="ns5:Regel"/>
+                      <xs:element minOccurs="0" name="Ausnahme" type="ns5:Ausnahme"/>
+                      <xs:element minOccurs="0" name="Status" type="xs:string"/>
+                      <xs:element minOccurs="0" name="StatusGueltigBis" type="xs:date"/>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="InkonsistenzListeOutput">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="ns11:AbstractOutput">
+                    <xs:sequence>
+                      <xs:element name="TotalAmount" type="xs:integer"/>
+                      <xs:element maxOccurs="unbounded" minOccurs="0" name="Inkonsistenzen" type="ns5:InkonsistenzListenEintrag"/>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="InkonsistenzSucheInput">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="ns11:AbstractInput">
+                    <xs:sequence>
+                      <xs:element name="SuchBedingungen" type="ns5:InkonsistenzSucheInput"/>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="RegelListeOutput" type="tns:RegelListeOutput"/>
+            <xs:element name="RegelSuchenInput" type="tns:RegelSuchenInput"/>
+            <xs:element name="ReportErstellenInput">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="ns11:AbstractInput">
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="DatenVonZeitpunkt" type="xs:dateTime"/>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ReportErstellenOutput">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="ns11:AbstractOutput"/>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ServiceFault" type="ns9:ServiceException"/>
+            <xs:element name="StatusInput" type="tns:StatusInput"/>
+            <xs:element name="StatusOutput" type="tns:StatusOutput"/>
+          </xs:schema>
+    <xs:schema xmlns:ismdmobdt="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/Oberbau/Datentypen/V01" xmlns:kanqs="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01" xmlns:kanqsdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01" xmlns:kanqswl="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01" xmlns:mdmaldt="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/Datentypen/V01" xmlns:mdmqs="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/V01" xmlns:mdmqswl="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/Wertelisten/V01" xmlns:or="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/Oberbau/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Wertelisten/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Ordnungsrahmen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/MDM/AllgemeineObjekte/Datentypen/V01"/>
+            <xs:complexType name="Attribut">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="listenName" type="xs:string"/>
+                <xs:element minOccurs="0" name="pfadInHierarchie" type="xs:string"/>
+                <xs:element minOccurs="0" name="wert" type="xs:string"/>
+                <xs:element name="AttributMetaDaten" type="mdmqs:AttributMetaDaten"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AttributMetaAspekt">
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Attribut" type="mdmqs:Attribut"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AttributMetaDaten">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="attributTyp" type="mdmaldt:AttributTypType"/>
+                <xs:element minOccurs="0" name="beziehungName" type="xs:string"/>
+                <xs:element minOccurs="0" name="fuehrendesSystem" type="mdmaldt:FuehrendesSystemType"/>
+                <xs:element minOccurs="0" name="genehmigungErforderlich" type="xs:boolean"/>
+                <xs:element minOccurs="0" name="kategorie" type="xs:string"/>
+                <xs:element minOccurs="0" name="name" type="xs:string"/>
+                <xs:element minOccurs="0" name="objektTyp" type="xs:string"/>
+                <xs:element minOccurs="0" name="zielObjektTyp" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Genehmigungsausschlusssteuerung">
+              <xs:complexContent>
+                <xs:extension base="kanqs:LogischesObjektOhneNetzBezug">
+                  <xs:sequence>
+                    <xs:element name="genehmigungsAusschlussKategorie" type="mdmaldt:GenehmigungsausschlussKategorieType"/>
+                    <xs:element name="objektinstanz" type="xs:string"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="StammdatenVerwaltungsAspekt">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="aenderungsBeschreibung" type="xs:string"/>
+                <xs:element minOccurs="0" name="aenderungsGrund" type="xs:string"/>
+                <xs:element name="aenderungsHerkunft" type="xs:string"/>
+                <xs:element minOccurs="0" name="aktiv" nillable="true" type="xs:boolean"/>
+                <xs:element minOccurs="0" name="genehmigungsStatus" type="kanqsdt:GenehmigungsstatusType"/>
+                <xs:element name="gueltigAbDatum" nillable="true" type="xs:date"/>
+                <xs:element minOccurs="0" name="lebensZyklusStatus" type="mdmaldt:LebenszyklusStatusType"/>
+                <xs:element minOccurs="0" name="letzteAenderungInQuelle" nillable="true" type="xs:dateTime"/>
+                <xs:element minOccurs="0" name="letzterAenderer" type="xs:string"/>
+                <xs:element minOccurs="0" name="letztesAenderungsdatum" nillable="true" type="xs:date"/>
+                <xs:element minOccurs="0" name="manuellZugeordnet" nillable="true" type="xs:boolean"/>
+                <xs:element minOccurs="0" name="objektTyp" type="xs:string"/>
+                <xs:element minOccurs="0" name="systemStatus" type="ismdmobdt:SystemStatusType"/>
+                <xs:element minOccurs="0" name="istAiB" nillable="true" type="xs:boolean"/>
+                <xs:element minOccurs="0" name="verpachtet" nillable="true" type="xs:boolean"/>
+                <xs:element minOccurs="0" name="verantwortlichesNetzSegment" type="or:NetzSegment"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:ns1="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Messages/V01" xmlns:ns2="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01" xmlns:ns3="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/Types/V01" xmlns:tns="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Messages/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/SOM/Exceptions/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/PRV/InfrastrukturObjekt/Types/V01"/>
+            <xs:complexType name="BasisInfrastruktur">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="TechnischerPlatz" type="ns3:TechnischerPlatzType"/>
+                <xs:element minOccurs="0" name="Anlagennummer" nillable="true" type="ns3:AnlagennummerType"/>
+                <xs:element minOccurs="0" name="Lebenszyklusstatus" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Anlagenklasse" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Aktivierungsdatum" nillable="true" type="ns3:AktivierungsdatumType"/>
+                <xs:element minOccurs="0" name="IstAIB" type="ns3:IstAIBType"/>
+                <xs:element minOccurs="0" name="Deaktivierungsdatum" nillable="true" type="ns3:DeaktivierungsdatumType"/>
+                <xs:element minOccurs="0" name="Kostenstelle" type="ns3:KostenstelleType"/>
+                <xs:element minOccurs="0" name="OEKuerzel" type="ns3:oeKuerzelType"/>
+                <xs:element minOccurs="0" name="Bahnstellennummer" type="ns3:BahnstellenNummerType"/>
+                <xs:element minOccurs="0" name="Netzsegmentkuerzel" type="ns3:NetzsegmentKuerzelType"/>
+                <xs:element minOccurs="0" name="Rahmenkostenstelle" type="ns3:RahmenkostenstelleType"/>
+                <xs:element minOccurs="0" name="PlanungswerkKuerzel" type="ns3:PlanungswerkKuerzelType"/>
+                <xs:element minOccurs="0" name="Buchungskreis" type="ns3:BuchungskreisType"/>
+                <xs:element minOccurs="0" name="Netzbezirkkuerzel" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Geschaeftseinheit" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Regionalbereichkuerzel" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Eigentuemer" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Verpachtet" type="ns3:VerpachtetType"/>
+                <xs:element minOccurs="0" name="Instandhalter" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Bundesland" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Betriebszustand" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Land" type="ns3:LandType"/>
+                <xs:element minOccurs="0" name="StreckenInformationenListe" type="tns:streckeninformationListType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Bauteil">
+              <xs:sequence>
+                <xs:element name="TechnischerPlatz" type="ns3:TechnischerPlatzType"/>
+                <xs:element minOccurs="0" name="Anlagennummer" type="ns3:AnlagennummerType"/>
+                <xs:element minOccurs="0" name="TPTyp" type="xs:string"/>
+                <xs:element minOccurs="0" name="Bauform" type="xs:string"/>
+                <xs:element minOccurs="0" name="Beschreibung" type="xs:string"/>
+                <xs:element minOccurs="0" name="ABC-Kennzeichen" type="xs:string"/>
+                <xs:element minOccurs="0" name="Kostenstelle" type="xs:string"/>
+                <xs:element minOccurs="0" name="Bautyp" type="xs:string"/>
+                <xs:element minOccurs="0" name="Planergruppe" type="xs:string"/>
+                <xs:element minOccurs="0" name="VerantwortlicherArbeitsplatz" type="xs:string"/>
+                <xs:element minOccurs="0" name="InBetriebAb" type="xs:date"/>
+                <xs:element minOccurs="0" name="Gewaehrleistungsbeginn" type="xs:date"/>
+                <xs:element minOccurs="0" name="Gewaehrleistungsende" type="xs:date"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Merkmal">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Name" type="xs:string"/>
+                      <xs:element minOccurs="0" name="Wert" type="xs:string"/>
+                      <xs:element name="Typ" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Streckeninformationen" type="tns:streckeninformationListType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Bruecke">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Bauart" type="ns3:BauartType"/>
+                <xs:element minOccurs="0" name="Bauwerkskennung" type="ns3:BauwerkskennungType"/>
+                <xs:element minOccurs="0" name="Breite" nillable="true" type="ns3:BreiteType"/>
+                <xs:element minOccurs="0" name="Laenge" nillable="true" type="ns3:LaengeType"/>
+                <xs:element minOccurs="0" name="Flaeche" nillable="true" type="ns3:FlaecheType"/>
+                <xs:element minOccurs="0" name="Gleisradius" nillable="true" type="ns3:GleisradiusType"/>
+                <xs:element minOccurs="0" name="AnzahlGleise" nillable="true" type="ns3:AnzahlGleiseType"/>
+                <xs:element minOccurs="0" name="Kreuzungskm" nillable="true" type="ns3:KreuzungsKMType"/>
+                <xs:element minOccurs="0" name="Kreuzungspartner" type="ns3:KreuzungsPartnerType"/>
+                <xs:element minOccurs="0" name="Nummer" type="ns3:NummerType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Durchlass">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Bauart" type="ns3:BauartType"/>
+                <xs:element minOccurs="0" name="Laenge" nillable="true" type="ns3:LaengeType"/>
+                <xs:element minOccurs="0" name="LichteWeiteInM" nillable="true" type="ns3:LichteWeite_MType"/>
+                <xs:element minOccurs="0" name="LichteHoeheInM" nillable="true" type="ns3:LichteHoehe_MType"/>
+                <xs:element minOccurs="0" name="MinimaleUeberschuettungshoeheInM" nillable="true" type="ns3:Min_Ueberschuettungshoehe_MType"/>
+                <xs:element minOccurs="0" name="AnzahlGleise" nillable="true" type="ns3:AnzahlGleiseType"/>
+                <xs:element minOccurs="0" name="NutzungBauwerk" type="ns3:NutzungBauwerkType"/>
+                <xs:element minOccurs="0" name="Kreuzungskm" nillable="true" type="ns3:KreuzungsKMType"/>
+                <xs:element minOccurs="0" name="Nummer" type="ns3:NummerType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Gleis">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Gleisbezeichnung" type="ns3:GleisbezeichnungType"/>
+                <xs:element minOccurs="0" name="BaulicheGleislaenge" nillable="true" type="ns3:BaulicheGleislaengeType"/>
+                <xs:element minOccurs="0" name="UeberwiegendeSchwellenart" type="ns3:UeberwiegendeSchwellenartType"/>
+                <xs:element minOccurs="0" name="Gleisart" type="ns3:GleisartType"/>
+                <xs:element minOccurs="0" name="IstAnschlussgleis" type="ns3:IstAnschlussgleisType"/>
+                <xs:element minOccurs="0" name="IstGleisverbindung" type="ns3:IstGleisverbindungType"/>
+                <xs:element minOccurs="0" name="LiegtAufFreierStrecke" type="ns3:LiegtAufFreierStreckeType"/>
+                <xs:element minOccurs="0" name="IstStumpfgleis" type="ns3:IstStumpfgleisType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InfrastrukturObjekt">
+              <xs:sequence>
+                <xs:element name="Metadaten" type="tns:Metadaten"/>
+                <xs:element name="BasisInfrastruktur" type="tns:BasisInfrastruktur"/>
+                <xs:element minOccurs="0" name="ISOBSpezifischeMerkmale" type="tns:SpezifischesISOB"/>
+                <xs:element minOccurs="0" name="SAPR3Netz-QuellDaten" type="tns:Quelldaten"/>
+                <xs:element minOccurs="0" name="SAPR3K-QuellDaten" type="tns:Quelldaten"/>
+                <xs:element minOccurs="0" name="DBGDI-QuellDaten" type="tns:Quelldaten"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="KeyValue">
+              <xs:sequence>
+                <xs:element name="Schluessel" type="xs:string"/>
+                <xs:element minOccurs="0" name="Bezeichnung" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="KeyValuePruefMerkmal">
+              <xs:complexContent>
+                <xs:extension base="tns:KeyValue">
+                  <xs:attribute name="pruefmerkmal" type="xs:boolean"/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="Laermschutzbauwerk">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="BauartBauwerk" type="ns3:BauartBauwerkType"/>
+                <xs:element minOccurs="0" name="Laenge" nillable="true" type="ns3:LaengeType"/>
+                <xs:element minOccurs="0" name="MaxHoehe" type="ns3:MaxHoeheType"/>
+                <xs:element minOccurs="0" name="MinHoehe" type="ns3:MinHoeheType"/>
+                <xs:element minOccurs="0" name="LageSO" type="ns3:LageSOType"/>
+                <xs:element minOccurs="0" name="Nummer" type="ns3:NummerType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Metadaten">
+              <xs:sequence>
+                <xs:element name="ID" type="ns3:IDType"/>
+                <xs:element name="Version" type="xs:integer"/>
+                <xs:element name="Aenderungsdatum" type="xs:dateTime"/>
+                <xs:element name="Anlagedatum" type="xs:dateTime"/>
+                <xs:element minOccurs="0" name="Aenderungsherkunft" type="xs:string"/>
+                <xs:element minOccurs="0" name="Aenderungsgrund" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="QuellStreckeninformationen">
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Quellfeld" type="tns:Quellfeld"/>
+              </xs:sequence>
+              <xs:attribute name="pruefmerkmal" type="xs:boolean"/>
+            </xs:complexType>
+            <xs:complexType name="Quelldaten">
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Quellfeld" type="tns:Quellfeld"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Streckeninformationen" type="tns:QuellStreckeninformationen"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Quellfeld">
+              <xs:simpleContent>
+                <xs:extension base="xs:string">
+                  <xs:attribute name="anzeigename" type="xs:string"/>
+                  <xs:attribute name="name" type="xs:string" use="required"/>
+                  <xs:attribute name="pruefmerkmal" type="xs:boolean"/>
+                </xs:extension>
+              </xs:simpleContent>
+            </xs:complexType>
+            <xs:complexType name="SpezifischesISOB">
+              <xs:choice>
+                <xs:element name="Bruecke" type="tns:Bruecke"/>
+                <xs:element name="Durchlass" type="tns:Durchlass"/>
+                <xs:element name="Gleis" type="tns:Gleis"/>
+                <xs:element name="Laermschutzbauwerk" type="tns:Laermschutzbauwerk"/>
+                <xs:element name="Stuetzbauwerk" type="tns:Stuetzbauwerk"/>
+                <xs:element name="Tunnel" type="tns:Tunnel"/>
+                <xs:element name="WeicheKreuzung" type="tns:WeicheKreuzung"/>
+              </xs:choice>
+            </xs:complexType>
+            <xs:complexType name="Stuetzbauwerk">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="BauartBauwerk" type="ns3:BauartBauwerkType"/>
+                <xs:element minOccurs="0" name="Laenge" nillable="true" type="ns3:LaengeType"/>
+                <xs:element minOccurs="0" name="LageSO" type="ns3:LageSOType"/>
+                <xs:element minOccurs="0" name="Nummer" type="ns3:NummerType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SuchFelder">
+              <xs:sequence>
+                <xs:element form="unqualified" minOccurs="0" name="ObjektID" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Objekttyp" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="TechnischerPlatz" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Anlagennummer" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Netzsegmentkuerzel" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Netzbezirk" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Betriebsstellenkuerzel" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Streckennummer">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="von" type="xs:integer"/>
+                      <xs:element minOccurs="0" name="bis" type="xs:integer"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element form="unqualified" minOccurs="0" name="KilometerVon" type="xs:decimal"/>
+                <xs:element form="unqualified" minOccurs="0" name="KilometerBis" type="xs:decimal"/>
+                <xs:element form="unqualified" minOccurs="0" name="Startposition" type="xs:integer"/>
+                <xs:element form="unqualified" minOccurs="0" name="MaximaleAnzahl" type="xs:integer"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SuchTreffer">
+              <xs:sequence>
+                <xs:element form="unqualified" name="Objekttyp" type="xs:string"/>
+                <xs:element form="unqualified" name="Objektid" type="xs:string"/>
+                <xs:element form="unqualified" name="ISOBNummer" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="TechnischerPlatz" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Anlagennummer" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Netzsegmentkuerzel" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Netzbezirkkuerzel" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Betriebsstellenkuerzel" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="Streckennummer" type="xs:integer"/>
+                <xs:element form="unqualified" minOccurs="0" name="Richtungskennzeichen" type="xs:integer"/>
+                <xs:element form="unqualified" minOccurs="0" name="KilometerVon" type="xs:decimal"/>
+                <xs:element form="unqualified" minOccurs="0" name="MeterVon" type="xs:integer"/>
+                <xs:element form="unqualified" minOccurs="0" name="KilometerBis" type="xs:decimal"/>
+                <xs:element form="unqualified" minOccurs="0" name="MeterBis" type="xs:integer"/>
+                <xs:element form="unqualified" minOccurs="0" name="Regionalbereichkuerzel" type="xs:string"/>
+                <xs:element form="unqualified" minOccurs="0" name="ISOBVersion" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Tunnel">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Bauwerkkennung" type="ns3:BauwerkskennungType"/>
+                <xs:element minOccurs="0" name="AnzahlGleise" nillable="true" type="ns3:AnzahlGleiseType"/>
+                <xs:element minOccurs="0" name="Laenge" nillable="true" type="ns3:LaengeType"/>
+                <xs:element minOccurs="0" name="LichterQuerschnitt" nillable="true" type="ns3:LichteQuerschnittType"/>
+                <xs:element minOccurs="0" name="Tunnelname" type="ns3:TunnelnameType"/>
+                <xs:element minOccurs="0" name="Nummer" type="ns3:NummerType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WeicheKreuzung">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="Weichenbezeichnung" type="ns3:WeichenbezeichnungType"/>
+                <xs:element minOccurs="0" name="Weichenlaenge" nillable="true" type="ns3:WeichenlaengeType"/>
+                <xs:element minOccurs="0" name="Bereichskennzahl" type="ns3:BereichskennzahlType"/>
+                <xs:element minOccurs="0" name="Weichenhalbmesser" type="ns3:WeichenhalbmesserType"/>
+                <xs:element minOccurs="0" name="Weichenart" type="ns3:WeichenartType"/>
+                <xs:element minOccurs="0" name="Gleisart" type="ns3:GleisartType"/>
+                <xs:element minOccurs="0" name="Schwellenart" type="ns3:SchwellenartType"/>
+                <xs:element minOccurs="0" name="RueckbaustatusOberbau" type="ns3:RueckbaustatusOberbauType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="streckeninformationListType">
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="StreckenInformationenListe" type="tns:streckeninformationType"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="streckeninformationType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="ID" type="xs:string"/>
+                <xs:element minOccurs="0" name="Position" type="ns3:PositionType"/>
+                <xs:element minOccurs="0" name="Streckennummer" type="ns3:StreckennummerType"/>
+                <xs:element minOccurs="0" name="Streckenkurzname" type="ns3:StreckenkurznameType"/>
+                <xs:element minOccurs="0" name="KilometerVon" nillable="true" type="ns3:KilometerVonType"/>
+                <xs:element minOccurs="0" name="MeterVon" nillable="true" type="ns3:MeterVonType"/>
+                <xs:element minOccurs="0" name="KilometerBis" nillable="true" type="ns3:KilometerBisType"/>
+                <xs:element minOccurs="0" name="MeterBis" nillable="true" type="ns3:MeterBisType"/>
+                <xs:element minOccurs="0" name="Richtungskennzeichen" type="tns:KeyValue"/>
+                <xs:element minOccurs="0" name="Lage" type="tns:KeyValue"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Bauteil" type="tns:Bauteil"/>
+            <xs:element name="StreckeninformationList" type="tns:streckeninformationListType"/>
+            <xs:element name="SuchTreffer" type="tns:SuchTreffer"/>
+          </xs:schema>
+    <xs:schema xmlns:obdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01">
+            <xs:complexType name="AntriebsArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BahnArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BahnNutzungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BauformType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BefestigungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BelastungsKennzifferType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BelastungsStufeType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BereichsKennzahlType">
+              <xs:sequence>
+                <xs:element name="kennzahl" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="EigentumOberleitungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ElektrifizierungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GeradeBogenWeicheType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GleisArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GleisOrdnungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GleisTypType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="HerzstueckBauArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="KonsolidierteSchwellenArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="KonsolidierteWeichenArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LageKennzahlType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="NetzTypType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RadlenkerBauartType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RueckbauStatusOberbauType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SchienenBefestigungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SchienenFormType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SchwellenArtBezeichnungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SchwellenArtKennzahlType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StahlsorteType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StandortkennzahlType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StreckenKlasseType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StreckenStandardType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StreckenZustandType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WeichenArtBezeichnungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WeichenHalbmesserType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WeichenHeizungsArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WeichenNeigungsZahlType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WeichenOrdnungType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WeichenSchwellenArtType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ZungenVorrichtungBauartType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+                <xs:element name="schluessel" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+    <xs:schema xmlns:bo="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/V01" xmlns:buswk="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/WeicheKreuzung/V01" xmlns:obdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01" xmlns:obwl="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Wertelisten/V01" xmlns:qsdt="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BUS/Entities/Oberbau/WeicheKreuzung/V01">
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/AllgemeineObjekte/Datentypen/V01"/>
+            <xs:import namespace="http://dbnetz.com/ISDaten/ISDVerwaltung/BOM/Oberbau/Datentypen/V01"/>
+            <xs:complexType name="ZusaetzlicheWeicheKreuzungDaten">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="anschlussGleisDritte" type="xs:string"/>
+                <xs:element minOccurs="0" name="antriebsArt" type="obdt:AntriebsArtType"/>
+                <xs:element minOccurs="0" name="anzahlZuegeProTag" type="xs:integer"/>
+                <xs:element minOccurs="0" name="bahnArt" type="obdt:BahnArtType"/>
+                <xs:element minOccurs="0" name="bahnhofBis" type="xs:string"/>
+                <xs:element minOccurs="0" name="bahnhofVon" type="xs:string"/>
+                <xs:element minOccurs="0" name="bahnNutzung" type="obdt:BahnNutzungType"/>
+                <xs:element minOccurs="0" name="bauartRadlenker" type="obdt:RadlenkerBauartType"/>
+                <xs:element minOccurs="0" name="bauartZungenVorrichtung" type="obdt:ZungenVorrichtungBauartType"/>
+                <xs:element minOccurs="0" name="bauform" type="obdt:BauformType"/>
+                <xs:element minOccurs="0" name="bautypMaterialnummer" type="xs:string"/>
+                <xs:element minOccurs="0" name="befestigung" type="obdt:BefestigungType"/>
+                <xs:element minOccurs="0" name="belastungsKennziffer" type="obdt:BelastungsKennzifferType"/>
+                <xs:element minOccurs="0" name="belastungsStufe" type="obdt:BelastungsStufeType"/>
+                <xs:element minOccurs="0" name="bestandsLaenge" type="qsdt:LaengeType"/>
+                <xs:element minOccurs="0" name="betriebsbereich" type="xs:integer"/>
+                <xs:element minOccurs="0" name="eigentumOberleitung" type="obdt:EigentumOberleitungType"/>
+                <xs:element minOccurs="0" name="elektrifizierung" type="obdt:ElektrifizierungType"/>
+                <xs:element minOccurs="0" name="garantieBeginnDatum" type="xs:date"/>
+                <xs:element minOccurs="0" name="garantieEndeDatum" type="xs:date"/>
+                <xs:element minOccurs="0" name="geradeBogenWeiche" type="obdt:GeradeBogenWeicheType"/>
+                <xs:element minOccurs="0" name="gesamtlaenge" type="qsdt:LaengeType"/>
+                <xs:element minOccurs="0" name="heizungsArt" type="obdt:WeichenHeizungsArtType"/>
+                <xs:element minOccurs="0" name="herstellJahrSchiene" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="herstellJahrSchwelle" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="herzstueckBauart" type="obdt:HerzstueckBauArtType"/>
+                <xs:element minOccurs="0" name="inBetriebAbDatum" type="xs:date"/>
+                <xs:element minOccurs="0" name="isolierung" type="xs:string"/>
+                <xs:element minOccurs="0" name="jahrInBenutzungsnahmeSchiene" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="jahrInBenutzungsnahmeSchwelle" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="jahrPlanumsVerbesserung" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="laengeGleisStuecke" type="qsdt:LaengeType"/>
+                <xs:element minOccurs="0" name="laengenZuschlag" type="qsdt:LaengeType"/>
+                <xs:element minOccurs="0" name="lageKennziffer" type="obdt:LageKennzahlType"/>
+                <xs:element minOccurs="0" name="lageKilometer" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="leistungsTonnenProTag" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="materialKennzahlSchiene" type="xs:string"/>
+                <xs:element minOccurs="0" name="materialKennzahlSchwelle" type="xs:string"/>
+                <xs:element minOccurs="0" name="netzTyp" type="obdt:NetzTypType"/>
+                <xs:element minOccurs="0" name="partner" type="xs:string"/>
+                <xs:element minOccurs="0" name="planerGruppe" type="xs:string"/>
+                <xs:element minOccurs="0" name="rueckbauJahr" type="qsdt:JahrType"/>
+                <xs:element minOccurs="0" name="schwellenArtKennzahl" type="obdt:SchwellenArtKennzahlType"/>
+                <xs:element minOccurs="0" name="schwellenArtKurzbezeichnung" type="obdt:WeichenSchwellenArtType"/>
+                <xs:element minOccurs="0" name="stahlsorteHerzstueck" type="obdt:StahlsorteType"/>
+                <xs:element minOccurs="0" name="stahlsorteRadlenker" type="obdt:StahlsorteType"/>
+                <xs:element minOccurs="0" name="stahlsorteSchiene" type="obdt:StahlsorteType"/>
+                <xs:element minOccurs="0" name="stahlsorteZungenVorrichtung" type="obdt:StahlsorteType"/>
+                <xs:element minOccurs="0" name="standortKennzahl" type="obdt:StandortkennzahlType"/>
+                <xs:element minOccurs="0" name="standortwerkVerantwortlicherArbeitsplatz" type="xs:string"/>
+                <xs:element minOccurs="0" name="stellwerksBezeichnung" type="xs:string"/>
+                <xs:element minOccurs="0" name="streckenKlasse" type="obdt:StreckenKlasseType"/>
+                <xs:element minOccurs="0" name="streckenStandard" type="obdt:StreckenStandardType"/>
+                <xs:element minOccurs="0" name="streckenZustand" type="obdt:StreckenZustandType"/>
+                <xs:element minOccurs="0" name="verantwortlicherArbeitsplatz" type="xs:string"/>
+                <xs:element minOccurs="0" name="weichenArtKurzbezeichnung" type="obdt:WeichenArtBezeichnungType"/>
+                <xs:element minOccurs="0" name="weichenOrdnung" type="obdt:WeichenOrdnungType"/>
+                <xs:element minOccurs="0" name="zulaessigeAbzweigGeschwindigkeit" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="zulaessigeGeschwindigkeit" type="xs:decimal"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="InkonsistenzLesenInputMessage">
+    <wsdl:part name="parameters" element="tns:InkonsistenzLesenInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReportErstellenInputMessage">
+    <wsdl:part name="parameters" element="tns:ReportErstellenInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InkonsistenzSucheInputMessage">
+    <wsdl:part name="parameters" element="tns:InkonsistenzSucheInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegelSuchenInputMessage">
+    <wsdl:part name="parameters" element="tns:RegelSuchenInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AusnahmenZaehlenOutputMessage">
+    <wsdl:part name="parameters" element="tns:AusnahmenZaehlenOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReportErstellenOutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportErstellenOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="StatusInputMessage">
+    <wsdl:part name="parameters" element="tns:StatusInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="StatusOutputMessage">
+    <wsdl:part name="parameters" element="tns:StatusOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AusnahmeOutputMessage">
+    <wsdl:part name="parameters" element="tns:AusnahmeOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InkonsistenzListeOutputMessage">
+    <wsdl:part name="parameters" element="tns:InkonsistenzListeOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FaultMessage">
+    <wsdl:part name="parameters" element="tns:ServiceFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RegelListeOutputMessage">
+    <wsdl:part name="parameters" element="tns:RegelListeOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InkonsistenzLesenOutputMessage">
+    <wsdl:part name="parameters" element="tns:InkonsistenzLesenOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AusnahmenZaehlenInputMessage">
+    <wsdl:part name="parameters" element="tns:AusnahmenZaehlenInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AusnahmeAnlegenInputMessage">
+    <wsdl:part name="parameters" element="tns:AusnahmeAnlegenInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BereinigenInputMessage">
+    <wsdl:part name="parameters" element="tns:BereinigenInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BereinigenOutputMessage">
+    <wsdl:part name="parameters" element="tns:BereinigenOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="com_dbnetz_ISDaten_ISDVerwaltung_PRV_DQVerwaltung_PT_SOAP" wsp:PolicyURIs="#WSSecurityPolicy">
+    <wsdl:operation name="InkonsistenzSuchen">
+      <wsdl:input message="tns:InkonsistenzSucheInputMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:InkonsistenzListeOutputMessage">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:FaultMessage">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Status">
+      <wsdl:input message="tns:StatusInputMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:StatusOutputMessage">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:FaultMessage">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Bereinigen">
+      <wsdl:input message="tns:BereinigenInputMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:BereinigenOutputMessage">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:FaultMessage">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReportErstellen">
+      <wsdl:input message="tns:ReportErstellenInputMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:ReportErstellenOutputMessage">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:FaultMessage">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RegelSuchen">
+      <wsdl:input message="tns:RegelSuchenInputMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:RegelListeOutputMessage">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:FaultMessage">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InkonsistenzLesen">
+      <wsdl:input message="tns:InkonsistenzLesenInputMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:InkonsistenzLesenOutputMessage">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:FaultMessage">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AusnahmeAnlegen">
+      <wsdl:input message="tns:AusnahmeAnlegenInputMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:AusnahmeOutputMessage">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:FaultMessage">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AusnahmenZaehlen">
+      <wsdl:input message="tns:AusnahmenZaehlenInputMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:AusnahmenZaehlenOutputMessage">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:FaultMessage">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="com_dbnetz_ISDaten_ISDVerwaltung_PRV_DQVerwaltung_PT_SOAPBinding" type="tns:com_dbnetz_ISDaten_ISDVerwaltung_PRV_DQVerwaltung_PT_SOAP">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="InkonsistenzSuchen">
+      <soap:operation soapAction="/DQVerwaltung.serviceagent/com_dbnetz_ISDaten_ISDVerwaltung_PRV_DQVerwaltung_PT_SOAP/InkonsistenzSuchen" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Status">
+      <soap:operation soapAction="/DQVerwaltung.serviceagent//Status" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Bereinigen">
+      <soap:operation soapAction="/DQVerwaltung.serviceagent//Bereinigen" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReportErstellen">
+      <soap:operation soapAction="/DQVerwaltung.serviceagent//ReportErstellen" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RegelSuchen">
+      <soap:operation soapAction="/DQVerwaltung.serviceagent/com_dbnetz_ISDaten_ISDVerwaltung_PRV_DQVerwaltung_PT_SOAP/RegelSuchen" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InkonsistenzLesen">
+      <soap:operation soapAction="/DQVerwaltung.serviceagent//InkonsistenzLesen" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AusnahmeAnlegen">
+      <soap:operation soapAction="/DQVerwaltung.serviceagent/com_dbnetz_ISDaten_ISDVerwaltung_PRV_DQVerwaltung_PT_SOAP/AusnahmeAnlegen" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AusnahmenZaehlen">
+      <soap:operation soapAction="/DQVerwaltung.serviceagent/com_dbnetz_ISDaten_ISDVerwaltung_PRV_DQVerwaltung_PT_SOAP/AusnahmenZaehlen" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PrvDQVerwaltung_VS_V01">
+    <wsdl:port name="PrvDQVerwaltung_VS_V01soaphttps" binding="tns:com_dbnetz_ISDaten_ISDVerwaltung_PRV_DQVerwaltung_PT_SOAPBinding">
+      <soap:address location="https://astatgw.dhcp.db.de:10622/ws/PrvDQVerwaltung_VS_V01"/>
+    </wsdl:port>
+  </wsdl:service>
+    <wsp:Policy wsu:Id="WSSecurityPolicy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken/>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Lax/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</wsdl:definitions>

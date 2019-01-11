@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="testSoap" targetNamespace="http://captainpicard.localdomain/msuUtils.ws:testSoap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://captainpicard.localdomain/msuUtils.ws:testSoap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://captainpicard.localdomain/msuUtils.ws:testSoap" xmlns:tns="http://captainpicard.localdomain/msuUtils.ws:testSoap" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:element name="add" type="tns:add"/>
+          <xsd:element name="addResponse" type="tns:addResponse"/>
+          <xsd:complexType name="add">
+            <xsd:sequence>
+              <xsd:element name="a" type="xsd:int"/>
+              <xsd:element name="b" type="xsd:integer"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="addResponse">
+            <xsd:sequence>
+              <xsd:element name="sum" type="xsd:integer"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        	</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="testSoap_PortType_add">
+    <wsdl:part name="parameters" element="tns:add">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testSoap_PortType_addResponse">
+    <wsdl:part name="parameters" element="tns:addResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="testSoap_PortType">
+    <wsdl:operation name="add">
+      <wsdl:input message="tns:testSoap_PortType_add">
+    </wsdl:input>
+      <wsdl:output message="tns:testSoap_PortType_addResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="msuUtils_ws_testSoap_Binder" type="tns:testSoap_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="add">
+      <soap:operation soapAction="msuUtils_ws_testSoap_Binder_add" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="msuUtils.ws.testSoap">
+    <wsdl:port name="msuUtils_ws_testSoap_Port" binding="tns:msuUtils_ws_testSoap_Binder">
+      <soap:address location="https://localhost:5556/ws/msuUtils.ws:testSoap"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
